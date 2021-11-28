@@ -3,6 +3,8 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_19_tracker/constants.dart';
 
+import '../constants.dart';
+
 
 class Search extends SearchDelegate{
 
@@ -14,8 +16,12 @@ class Search extends SearchDelegate{
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-      primaryColor: primaryBlack,
-      //brightness: DynamicTheme.of(context).brightness
+      appBarTheme: AppBarTheme(
+        
+          
+            color: kPrimaryColor,
+          ),
+        //brightness: DynamicTheme.of(context).brightness
     );
   }
 

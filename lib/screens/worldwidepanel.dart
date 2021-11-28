@@ -19,12 +19,12 @@ class WorldwidePanel extends StatelessWidget {
         //shrinkWrap: true,
         //physics: NeverScrollableScrollPhysics(),
         //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //crossAxisCount: 2, childAspectRatio: 2),
+        //crossAxisCount: 2, childAspectRatio: 2),
         children: <Widget>[
           InfoCard(
-              title: "Confirmed Cases",
-              iconColor: Color(0xFFFF8C00),
-              effectedNum: worldData['cases'].toString(),
+            title: "Confirmed Cases",
+            iconColor: Color(0xFFFF8C00),
+            effectedNum: worldData['cases'],
             //title: 'Confirmed Cases',
             //panelColor: Colors.red[100],
             //textColor: Colors.red,
@@ -33,7 +33,7 @@ class WorldwidePanel extends StatelessWidget {
           InfoCard(
             title: "Active Cases",
             iconColor: Color(0xFFFF2D55),
-            effectedNum: worldData['active'].toString(),
+            effectedNum: worldData['active'],
             press: () {},
             //title: 'Active Cases',
             //panelColor: Colors.blue[100],
@@ -43,32 +43,27 @@ class WorldwidePanel extends StatelessWidget {
           InfoCard(
             title: "Total Recovered",
             iconColor: Color(0xFF50E3C2),
-            effectedNum: worldData['recovered'].toString(),
+            effectedNum: worldData['recovered'],
             press: () {},
             //title: 'Recovered Cases',
             //panelColor: Colors.green[100],
-           //textColor: Colors.green,
+            //textColor: Colors.green,
             //count: worldData['recovered'].toString(),
           ),
           InfoCard(
-            title: "Deceased Cases",
-            iconColor: Color(0xFF5856D6),
-            effectedNum: worldData['deaths'].toString(),
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context){
-                    return DetailsScreen();
-                  }
-                )
-              );
-            }
-            //title: 'Deceased Cases',
-            //panelColor: Colors.grey[400],
-            //textColor: Colors.grey[900],
-            //count: worldData['deaths'].toString(),
-          ),
+              title: "Deceased Cases",
+              iconColor: Color(0xFF5856D6),
+              effectedNum: worldData['deaths'],
+              press: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DetailsScreen();
+                }));
+              }
+              //title: 'Deceased Cases',
+              //panelColor: Colors.grey[400],
+              //textColor: Colors.grey[900],
+              //count: worldData['deaths'].toString(),
+              ),
         ],
       ),
     );
@@ -76,16 +71,24 @@ class WorldwidePanel extends StatelessWidget {
 }
 
 class InfoCard extends StatelessWidget {
-
   final String title;
   final String count;
-  final String effectedNum;
+  final int effectedNum;
+  final double finalNum;
   final Color iconColor;
   final Function press;
   final Map worldData;
 
-  const InfoCard({Key key, this.worldData, this.title, this.effectedNum, this.iconColor, this.press, this.count}) : super(key: key);
-
+  const InfoCard(
+      {Key key,
+      this.worldData,
+      this.title,
+      this.effectedNum,
+      this.iconColor,
+      this.press,
+      this.finalNum,
+      this.count})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -145,11 +148,13 @@ class InfoCard extends StatelessWidget {
                               style: TextStyle(color: kTextColor),
                               children: [
                                 TextSpan(
-                                  text: "$effectedNum \n",
-                                  style:
-                                  Theme.of(context).textTheme.headline6.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  text: "$effectedNum\n",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                                 TextSpan(
                                   text: "People",

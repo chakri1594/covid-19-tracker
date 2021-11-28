@@ -11,24 +11,23 @@ import 'package:covid_19_tracker/screens/virus_details_page.dart';
 import 'package:covid_19_tracker/Symptoms/Symptoms_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid_19_tracker/screens/worldwidepanel.dart';
+import 'package:covid_19_tracker/screensize_reducer-dart';
 
 import 'countypage.dart';
-
-
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
-@override
+  @override
   _Homepage createState() => _Homepage();
-
 }
-class _Homepage extends State<HomeScreen>{
+
+class _Homepage extends State<HomeScreen> {
   Map worldData;
 
   fetchWorldWideData() async {
-    http.Response response = await http.get(Uri.parse('https://corona.lmao.ninja/v2/all'));
+    http.Response response =
+        await http.get(Uri.parse('https://corona.lmao.ninja/v2/all'));
     setState(() {
       worldData = json.decode(response.body);
     });
@@ -36,15 +35,14 @@ class _Homepage extends State<HomeScreen>{
 
   List countryData;
   fetchCountryData() async {
-    http.Response response =
-    await http.get(Uri.parse('https://corona.lmao.ninja/v2/countries?sort=cases'));
+    http.Response response = await http
+        .get(Uri.parse('https://corona.lmao.ninja/v2/countries?sort=cases'));
     setState(() {
       countryData = json.decode(response.body);
     });
   }
 
-
-  Future fetchData() async{
+  Future fetchData() async {
     fetchWorldWideData();
     fetchCountryData();
     print('fetchData called');
@@ -63,14 +61,13 @@ class _Homepage extends State<HomeScreen>{
 
 //wrap singlechildscrollview for correct displaying in small density devices
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-
-              padding: EdgeInsets.only(left: 20, top: 20, right: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 20, top: 20, right: 20, bottom: 20),
               width: double.infinity,
-
               decoration: BoxDecoration(
                 color: kPrimaryColor.withOpacity(0.03),
                 borderRadius: BorderRadius.only(
@@ -78,10 +75,10 @@ class _Homepage extends State<HomeScreen>{
                   bottomRight: Radius.circular(50),
                 ),
               ),
-              ),
-
-              Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -91,8 +88,10 @@ class _Homepage extends State<HomeScreen>{
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CountryPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CountryPage()));
                     },
                     child: Container(
                         decoration: BoxDecoration(
@@ -111,13 +110,14 @@ class _Homepage extends State<HomeScreen>{
               ),
             ),
             worldData == null
-              ? Center(
-                child: CircularProgressIndicator(strokeWidth: 5,),
-              )
-              : WorldwidePanel(
-              worldData: worldData,
-            ),
-            
+                ? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 5,
+                    ),
+                  )
+                : WorldwidePanel(
+                    worldData: worldData,
+                  ),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -125,7 +125,6 @@ class _Homepage extends State<HomeScreen>{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-
                     SizedBox(height: 20),
                     titled(),
                     SizedBox(height: 1),
@@ -147,35 +146,35 @@ class _Homepage extends State<HomeScreen>{
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         IconButton(
-
           icon: Image.asset("assets/icons/symptoms.png"),
           iconSize: 100,
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                    Symptoms(color: Colors.green, imgPath: "assets/symptoms/symptoms.png")));
+                builder: (context) => Symptoms(
+                    color: Colors.green,
+                    imgPath: "assets/symptoms/symptoms.png")));
             //VirusDetailsScreen();
           },
         ),
-
         IconButton(
           icon: Image.asset("assets/icons/use_mask.png"),
           iconSize: 100,
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                     Precaution(color: Colors.green, imgPath: "assets/prevention/boy.png")));
+                builder: (context) => Precaution(
+                    color: Colors.green,
+                    imgPath: "assets/prevention/boy.png")));
             //VirusDetailsScreen();
           },
         ),
-
         IconButton(
           icon: Image.asset("assets/icons/faq.png"),
           iconSize: 100,
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                     VirusDetailsScreen(color: Colors.green, imgPath: "assets/icons/corona_virus.png")));
+                builder: (context) => VirusDetailsScreen(
+                    color: Colors.green,
+                    imgPath: "assets/icons/corona_virus.png")));
             //VirusDetailsScreen();
           },
         ),
@@ -196,11 +195,11 @@ class _Homepage extends State<HomeScreen>{
       ],
     );
   }
-  Row buildPreventation(){
+
+  Row buildPreventation() {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const <Widget>[
-
           PreventitonCard(
             title: "        Symptoms",
           ),
@@ -210,68 +209,60 @@ class _Homepage extends State<HomeScreen>{
           PreventitonCard(
             title: "Info             ",
           ),
-        ]
-    );
+        ]);
   }
 
   Container buildHelpCard(BuildContext context) {
-
     return Container(
       height: 150,
       width: double.infinity,
       child: Stack(
         alignment: Alignment.bottomLeft,
         children: <Widget>[
-
           InkWell(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                    QNA()));
-
-
-    },
-          child: Container(
-
-            padding: EdgeInsets.only(
-              // left side padding is 40% of total width
-              left: MediaQuery.of(context).size.width * .4,
-              top: 20,
-              right: 20,
-            ),
-            height: 130,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFF60BE93),
-                  Color(0xFF1B8D59),
-                ],
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => QNA()));
+            },
+            child: Container(
+              padding: EdgeInsets.only(
+                // left side padding is 40% of total width
+                left: MediaQuery.of(context).size.width * .4,
+                top: 20,
+                right: 20,
               ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Self Assessment\n",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        .copyWith(color: Colors.white),
-                  ),
-                  TextSpan(
-                    text: "Follow the instructions to \nget recommendations on your health",
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
+              height: 130,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF60BE93),
+                    Color(0xFF1B8D59),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Self Assessment\n",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6
+                          .copyWith(color: Colors.white),
                     ),
-                  ),
-                ],
+                    TextSpan(
+                      text:
+                          "Follow the instructions to \nget recommendations on your health",
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-
-          ),
-
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -285,7 +276,6 @@ class _Homepage extends State<HomeScreen>{
         ],
       ),
     );
-
   }
 
   AppBar buildAppBar() {
@@ -294,7 +284,8 @@ class _Homepage extends State<HomeScreen>{
       elevation: 0,
       centerTitle: false,
       title: const AutoSizeText(
-        "Covid-19 Tracker", textAlign: TextAlign.center,
+        "Covid-19 Tracker",
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 22,
           fontFamily: "Trajan Pro",
@@ -322,10 +313,9 @@ class PreventitonCard extends StatelessWidget {
   final String title;
   const PreventitonCard({
     Key key,
-   // this.svgSrc,
+    // this.svgSrc,
     this.title,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -334,12 +324,12 @@ class PreventitonCard extends StatelessWidget {
         //SvgPicture.asset(svgSrc),
         Text(
           title,
-          style:
-              Theme.of(context).textTheme.bodyText1.copyWith(color: kPrimaryColor),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: kPrimaryColor),
         )
       ],
     );
   }
-
 }
-
