@@ -1,9 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:covid_19_tracker/constants.dart';
 import 'package:covid_19_tracker/widgets/weekly_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DetailsScreen extends StatelessWidget {
+
+  final Map worldData;
+
+  const DetailsScreen({Key key, this.worldData}) : super(key: key);
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +136,7 @@ class DetailsScreen extends StatelessWidget {
     return Row(
       children: <Widget>[
         Text(
-          "547 ",
+          "500 ",
           style: Theme.of(context)
               .textTheme
               .headline2
@@ -148,7 +156,7 @@ class DetailsScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Text(
-          "New Cases",
+          "New Cases: ",
           style: TextStyle(
             color: kTextMediumColor,
             fontWeight: FontWeight.w600,

@@ -3,6 +3,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class LineReportChart extends StatelessWidget {
+
+  final Map worldData;
+
+  const LineReportChart({Key key, this.worldData}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -29,6 +34,7 @@ class LineReportChart extends StatelessWidget {
 
   List<FlSpot> getSports() {
     return [
+      FlSpot(0, 1),
       FlSpot(0, .5),
       FlSpot(1, 1.5),
       FlSpot(2, .5),

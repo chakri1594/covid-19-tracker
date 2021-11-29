@@ -11,7 +11,6 @@ import 'package:covid_19_tracker/screens/virus_details_page.dart';
 import 'package:covid_19_tracker/Symptoms/Symptoms_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid_19_tracker/screens/worldwidepanel.dart';
-import 'package:covid_19_tracker/screensize_reducer-dart';
 
 import 'countypage.dart';
 

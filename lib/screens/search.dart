@@ -69,8 +69,8 @@ return Container();
                width: 200,
                margin: EdgeInsets.symmetric(horizontal: 10),
                child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: <Widget>[
                    Text(
                      suggestionList[index]['country'],
@@ -87,8 +87,10 @@ return Container();
              Expanded(
                  child: Container(
                    child: Column(
-                     children: <Widget>[
-                       Text(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                        Text(
                          'CONFIRMED:' +
                              suggestionList[index]['cases'].toString(),
                          style: TextStyle(

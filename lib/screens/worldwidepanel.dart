@@ -1,7 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:covid_19_tracker/widgets/line_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../constants.dart';
 import 'details_screen.dart';
 
@@ -12,60 +13,58 @@ class WorldwidePanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Wrap(
-        runSpacing: 20,
-        spacing: 20,
-        //shrinkWrap: true,
-        //physics: NeverScrollableScrollPhysics(),
-        //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //crossAxisCount: 2, childAspectRatio: 2),
-        children: <Widget>[
-          InfoCard(
-            title: "Confirmed Cases",
-            iconColor: Color(0xFFFF8C00),
-            effectedNum: worldData['cases'],
-            //title: 'Confirmed Cases',
-            //panelColor: Colors.red[100],
-            //textColor: Colors.red,
-            //count: worldData['cases'].toString(),
-          ),
-          InfoCard(
-            title: "Active Cases",
-            iconColor: Color(0xFFFF2D55),
-            effectedNum: worldData['active'],
-            press: () {},
-            //title: 'Active Cases',
-            //panelColor: Colors.blue[100],
-            //textColor: Colors.blue[900],
-            //count: worldData['active'].toString(),
-          ),
-          InfoCard(
-            title: "Total Recovered",
-            iconColor: Color(0xFF50E3C2),
-            effectedNum: worldData['recovered'],
-            press: () {},
-            //title: 'Recovered Cases',
-            //panelColor: Colors.green[100],
-            //textColor: Colors.green,
-            //count: worldData['recovered'].toString(),
-          ),
-          InfoCard(
-              title: "Deceased Cases",
-              iconColor: Color(0xFF5856D6),
-              effectedNum: worldData['deaths'],
-              press: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DetailsScreen();
-                }));
-              }
-              //title: 'Deceased Cases',
-              //panelColor: Colors.grey[400],
-              //textColor: Colors.grey[900],
-              //count: worldData['deaths'].toString(),
-              ),
-        ],
-      ),
+    return Wrap(
+      runSpacing: 20,
+      spacing: 20,
+      //shrinkWrap: true,
+      //physics: NeverScrollableScrollPhysics(),
+      //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //crossAxisCount: 2, childAspectRatio: 2),
+      children: <Widget>[
+        InfoCard(
+          title: "Confirmed Cases",
+          iconColor: Color(0xFFFF8C00),
+          effectedNum: worldData['cases'],
+          //title: 'Confirmed Cases',
+          //panelColor: Colors.red[100],
+          //textColor: Colors.red,
+          //count: worldData['cases'].toString(),
+        ),
+        InfoCard(
+          title: "Active Cases",
+          iconColor: Color(0xFFFF2D55),
+          effectedNum: worldData['active'],
+          press: () {},
+          //title: 'Active Cases',
+          //panelColor: Colors.blue[100],
+          //textColor: Colors.blue[900],
+          //count: worldData['active'].toString(),
+        ),
+        InfoCard(
+          title: "Total Recovered",
+          iconColor: Color(0xFF50E3C2),
+          effectedNum: worldData['recovered'],
+          press: () {},
+          //title: 'Recovered Cases',
+          //panelColor: Colors.green[100],
+          //textColor: Colors.green,
+          //count: worldData['recovered'].toString(),
+        ),
+        InfoCard(
+            title: "Deceased Cases",
+            iconColor: Color(0xFF5856D6),
+            effectedNum: worldData['deaths'],
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DetailsScreen();
+              }));
+            }
+            //title: 'Deceased Cases',
+            //panelColor: Colors.grey[400],
+            //textColor: Colors.grey[900],
+            //count: worldData['deaths'].toString(),
+            ),
+      ],
     );
   }
 }
@@ -140,10 +139,12 @@ class InfoCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: RichText(
+                            textAlign: TextAlign.center,
                             text: TextSpan(
                               style: TextStyle(color: kTextColor),
                               children: [
@@ -167,9 +168,9 @@ class InfoCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: LineReportChart(),
-                        ),
+                        //Expanded(
+                          //child: LineReportChart(),
+                        //),
                       ],
                     ),
                   )
