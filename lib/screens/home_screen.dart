@@ -280,11 +280,16 @@ class _Homepage extends State<HomeScreen> {
 
   AppBar buildAppBar() {
     return AppBar(
+      leading: const Icon(
+        Icons.coronavirus_rounded,
+        color: kPrimaryColor,
+        size: 40,
+      ),
       backgroundColor: kPrimaryColor.withOpacity(.03),
       elevation: 0,
-      centerTitle: false,
+      centerTitle: true,
       title: const AutoSizeText(
-        "Covid-19 Tracker",
+        "COVID-19 Tracker",
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 22,

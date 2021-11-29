@@ -165,7 +165,7 @@ class _QNAState extends State<QNA> {
       setState(() {
         conversation.add(ChatMessage(
           text:
-              'Hello There! The purpose of this Self=Assessment tool is to help you make decisions about seeking appropriate medical care.\nThis system is not intended for the diagnosis or treatment of disease, including COVID-19.',
+              'Hello There! The purpose of this Self-Assessment tool is to help you make decisions about seeking appropriate medical care.\nThis system is not intended for the diagnosis or treatment of disease, including COVID-19.',
           user: bot,
 
         ));
@@ -245,7 +245,7 @@ class _QNAState extends State<QNA> {
             (isLodding)
             //LOADING
                 ? Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(40.0),
                   child: Center(
                       child: SizedBox(
                         height: 40,
@@ -255,7 +255,7 @@ class _QNAState extends State<QNA> {
                               indicatorType: Indicator.ballPulseSync))),
                 )
                 : SizedBox(
-                    height: 80,
+                    height: 140,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

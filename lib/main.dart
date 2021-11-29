@@ -36,8 +36,6 @@ class MyApp extends StatelessWidget {
         Routes.Precaution: (context) => Precaution(),
         Routes.Symptoms: (context) => Symptoms(),
         Routes.FAQ: (context) => VirusDetailsScreen(),
-
-
       },
     );
   }

@@ -77,13 +77,16 @@ class _CountryPageState extends State<CountryPage> {
                   Expanded(
                       child: Container(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
                               'CONFIRMED:' +
                                   countryData[index]['cases'].toString(),
+                              // ignore: prefer_const_constructors
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.red),
+                                  color: Colors.red,),
                             ),
                             Text(
                               'ACTIVE:' +
